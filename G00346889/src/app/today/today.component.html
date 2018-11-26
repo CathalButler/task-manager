@@ -1,4 +1,4 @@
-<mat-toolbar class="header_toolbar" color="primary">Current Tasks</mat-toolbar>
+<mat-toolbar class="header_toolbar" color="primary">Todays Tasks</mat-toolbar>
 <mat-accordion multi="true" *ngIf="tasks.length > 0">
   <div class="container">
     <mat-grid-list cols="3" rowHeight="300px">
@@ -28,10 +28,10 @@
               </mat-list-item>
 
               <mat-list-item class="bottom_right_card_grid">
-                <mat-radio-group ngModel={{task.priority}}>
-                  <mat-radio-button name="priority1" value="1" (click)="onUpdate(task._id, 1)">!</mat-radio-button>
-                  <mat-radio-button name="priority2" value="2" (click)="onUpdate(task._id, 2)">!!</mat-radio-button>
-                  <mat-radio-button name="priority3" value="3" (click)="onUpdate(task._id, 3)">!!!</mat-radio-button>
+                <mat-radio-group name="priority" ngModel={{task.priority}} #priority="ngModel">
+                  <mat-radio-button name="priority" value="1" (click)="onUpdate(task._id, 1)">!</mat-radio-button>
+                  <mat-radio-button name="priority" value="2" (click)="onUpdate(task._id, 2)">!!</mat-radio-button>
+                  <mat-radio-button name="priority" value="3" (click)="onUpdate(task._id, 3)">!!!</mat-radio-button>
                 </mat-radio-group>
               </mat-list-item>
             </div>
@@ -53,4 +53,4 @@
 
   </div>
 </mat-accordion>
-<h2 class="informationMessasge" *ngIf="tasks.length <= 0">No tasks in the database</h2>
+<h2 class="informationMessasge" *ngIf="tasks.length <= 0">There are no tasks for today.</h2>

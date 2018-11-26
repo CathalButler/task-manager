@@ -3,6 +3,25 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Task } from '../task.model';
 
+/**
+ * @title Post Service
+ * @desc this service is used for handling requests from apps components to the server @localhost:8081.
+ * Function implemented:
+ * 
+ *     - getTasksData(boolean) - gets all tasks from the server. Take one peramter for task being 'uncompleted' or 'complete'
+ *     - getTask(String) -  get a task by its ID from the server.
+ *     - addTask(String, String, Number, String, Boolean) - post a newly created task to the server.
+ *     - editTask(String, String, Number, String, Boolean) - put a edited task data to the server.
+ *     - deleteTask(String) - delete request by task id to the server.
+ *     - updateTask(String, boolean) - put request for a updated task. Takes two peramters, task id and isComplete. 
+ *     - updateNote(String, String) - put request to update a note for a selected task. Takes two permaters, task id and note.
+ *     - updatePriority(String, Number) - put request to update the priority of a selected task. Takes two permaters, tasks id and priority.
+ *     - getTodayTask(String) - get request to get tasks for the current date(todays date). Takes one permater, todaysDate.
+ * 
+ * @note Used imports:
+ *    - import { Task } // Model 
+ */
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +39,7 @@ export class PostService {
   */
   getTasksData(isComplete: Boolean): Observable<any> {
     //Connect to server URL here and GET JSON DATA
-    return this.http.get("http://127.0.0.1:8081/api/tasks/" + isComplete);
+    return this.http.get("http://localhost:8081/api/tasks/" + isComplete);
   }
 
   /**
@@ -40,8 +59,8 @@ export class PostService {
   addTask(task_name: String, note: String, priority: Number, date: String, isComplete: Boolean): Observable<any> {
     const task: Task = { task_name: task_name, note: note, priority: priority, date: date, isComplete: isComplete };
     console.log("Task Added inside post.service!");
-    return this.http.post("http://127.0.0.1:8081/api/tasks", task)
-  }
+    return this.http.post("http://localhost:8081/api/tasks", task)
+  }o
 
   /**
   * @title Updates a task
@@ -83,4 +102,22 @@ export class PostService {
     return this.http.put("http://localhost:8081/api/tasks/update/note/" + id, updateNote);
   }
 
+  /**
+   * @title Updates a note in a task
+   * @desc updates a selected tasks priority in the database.
+   * @note passes 1 Strings & a number, Server takes care of the request.
+   */
+  updatePriority(id: String, priority: Number): Observable<any> {
+    const updatePriority = { priority };
+    return this.http.put("http://localhost:8081/api/tasks/update/priority/" + id, updatePriority)
+  }
+
+  /**
+   * @title Gets current date tasks
+   * @desc gets all tasks for the current date.
+   * @note passes 1 String with current date, Server takes care of the request.
+   */
+  getTodayTask(todaysDate: String): Observable<any> {
+    return this.http.get("http://localhost:8081/api/tasks/today/" + todaysDate);
+  }//End Function
 }// End class

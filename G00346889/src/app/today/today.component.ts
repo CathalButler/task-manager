@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PostService } from '../services/post.service';
 import { MatDialog } from '@angular/material';
 import { NoteComponent } from '../note/note.component';
@@ -7,11 +7,12 @@ export interface DialogData {
   note;
   taskId;
 }// End export interface
+//TO-DO ADD THIS TO A FILE AND CALL THAT EVERYTIME I NEED IT.
 
 /**
- * @title View page tasks.
- * @desc this component displays tasks data to on screen it adds functions
- * for the user like:
+ * @title Today tasks.
+ * @desc this component displays current day tasks(todays date)
+ 
  *     - onDelete() - allows the user delete a post
  *     - openDialog() -  allows the user view the note on a post.
  *     - onComplete() - allows the user mark a task as complete.
@@ -25,21 +26,22 @@ export interface DialogData {
  * 
  * Tasks are got from the server where they are stored.
  */
+
 @Component({
-  selector: 'app-view',
-  templateUrl: './view.component.html',
-  styleUrls: ['./view.component.css']
+  selector: 'app-today',
+  templateUrl: './today.component.html',
+  styleUrls: ['./today.component.css']
 })
-export class ViewComponent implements OnInit {
+export class TodayComponent implements OnInit {
 
   tasks: any = []; //Array used for locally storing tasks
 
-  constructor(public dialog: MatDialog, private postservice: PostService) { }
+  constructor(private postservice: PostService, public dialog: MatDialog) { }
 
   /**
-   * @title Delete Task
-   * @desc makes a delete request to the server for a selected task
-   */
+  * @title Delete Task
+  * @desc makes a delete request to the server for a selected task
+  */
   onDelete(id: String) {
     console.log("Deleting item")
     this.postservice.deleteTask(id).subscribe(() => {
@@ -88,11 +90,15 @@ export class ViewComponent implements OnInit {
     });
   }// End Function
 
-  ngOnInit() {
-    this.postservice.getTasksData(false).subscribe(data => {
-      this.tasks = data; //get api json data for list
-      console.log('inside view.ts', this.tasks);
-    })
-  }// End function
-}// End class
 
+  ngOnInit() {
+    // getDate() - need to get current date and do a seach of the database for the same date.
+    var todayDate = new Date(); //Get current date
+    console.log(todayDate.toDateString()); //Print it
+
+    this.postservice.getTodayTask(todayDate.toDateString()).subscribe(data => {
+      this.tasks = data; //Place data into tasks array
+      console.log('inside today.ts', this.tasks);
+    });
+  }// End function
+}// End Class

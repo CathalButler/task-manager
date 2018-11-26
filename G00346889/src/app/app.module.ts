@@ -14,6 +14,7 @@ import { ViewComponent } from './view/view.component';
 import { CompletedComponent } from './completed/completed.component';
 import { NoteComponent } from './note/note.component';
 import { EditComponent } from './edit/edit.component';
+import { TodayComponent } from './today/today.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 //Import for Forms
 import { FormsModule } from "@angular/forms";
@@ -36,7 +37,6 @@ import {
   MatGridListModule,
 } from '@angular/material';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +45,8 @@ import {
     CompletedComponent,
     NoteComponent,
     EditComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TodayComponent
   ],
   imports: [
     BrowserModule,

@@ -78,9 +78,16 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     font-weight: normal;
-  
   }
   
+  .complete-button{
+     margin: 0;
+  }
+  
+  .mat-card-actions .mat-button, .mat-card-actions .mat-raised-button {
+     margin: 0;
+  }
+
   .informationMessasge{
     font-family: monospace;
     text-align: center;

@@ -3,6 +3,18 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { PostService } from '../services/post.service';
 import { NgForm } from "@angular/forms";
 
+/**
+ * @title Edit tasks.
+ * @desc this component allows the user update a selected task.
+ * Functions:
+ *     - onDelete() - allows the user delete a post
+ *     - openDialog() -  allows the user view the note on a post.
+ *     - onComplete() - allows the user mark a task as complete.
+ *     - onUpdate() - allows the user update the priority of a task.
+ * 
+ * Tasks are pulled from the server where it is stored.
+ */
+
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -23,7 +35,6 @@ export class EditComponent implements OnInit {
   onEditPost(form: NgForm) {
     this.ps.editTask(this.task[0]._id, form.value.task_name, form.value.note, form.value.priority, form.value.date, false).subscribe();
     console.log('DONE INSIDE onEditPost', form.value);
-   // form.resetForm();
     this.router.navigate(['/view']);
   }// End edit post
   

@@ -87,3 +87,8 @@
 .mat-card-actions .mat-button, .mat-card-actions .mat-raised-button {
    margin: 0;
 }
+
+.informationMessasge{
+  font-family: monospace;
+  text-align: center;
+}

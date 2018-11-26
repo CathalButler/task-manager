@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ViewComponent } from './view/view.component';
 import { CompletedComponent } from './completed/completed.component';
 import { EditComponent } from './edit/edit.component';
+import { TodayComponent } from './today/today.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'edit/:id',
     component: EditComponent
+  },
+  {
+    path: 'today',
+    component: TodayComponent,
   },
   { path: '**', component: PageNotFoundComponent }
 ];

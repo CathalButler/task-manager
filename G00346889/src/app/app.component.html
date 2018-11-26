@@ -15,6 +15,7 @@
     </mat-toolbar-row>
 
     <mat-toolbar-row class="main-bar">
+      <button class="main-bar-items" mat-button [routerLink]="['/today']">Todays Tasks</button>
       <button class="main-bar-items" mat-button (click)="openDialog()" color="Warn">Create</button>
       <button class="main-bar-items" mat-button [routerLink]="['/']">View Tasks</button>
       <button class="main-bar-items" mat-button [routerLink]="['/completed']">Completed Tasks</button>

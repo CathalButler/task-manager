@@ -136,7 +136,6 @@ app.get('/api/tasks/edit/:id', function (req, res) { //Had to change link ending
         });
 });// End GET REQUEST
 
-
 /**
  * @title PUT REQUEST, findByIdAndUpdate().
  * @desc finds a task by its id number in the database and updates it.
@@ -188,6 +187,39 @@ app.put('/api/tasks/update/note/:id', function (req, res) {
         });
 });// End PUT REQUEST
 
+/**
+ * @title PUT REQUEST, findByIdAndUpdate().
+ * @desc finds a task by its id number in the database and updates it.
+ * @note executes immediately, passing results to callback. Logs the data to the server console.
+ */
+app.put('/api/tasks/update/priority/:id', function (req, res) {
+    tastsModel.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true },
+        function (err, task) {
+            if (err) return res.status(500).send("There was a problem updating the task.");
+            res.status(200).send(task);
+            console.log('\nTask status has been updated in database\n', task); //Log the delete
+        });
+});// End PUT REQUEST
+
+/**
+ * @title GET REQUEST, find().
+ * @desc gets all tasks data for the current date from the database.
+ * @note executes immediately, passing results to callback. Logs the data to the server console.
+ */
+app.get('/api/tasks/today/:todaysDate', function (req, res) {
+    //TO-DO Make a request to get all the task for current date(todays date) compare passed values date with the databases date
+    console.log(req.params.todaysDate);
+    tastsModel.find({
+        date: req.params.todaysDate //TO-DO MAKE SURE WHEN MARKED COMPLETE IT REMOVES FROM TODAY LIST OR ADDS TICK
+    }, function (err, tasks) {
+        if (err) return res.status(500).send("There was a problem finding the tasks for the current date(today).");
+        res.status(200).send(tasks);
+        console.log("\nRetrieved all current tasks from database:\n");
+    });//End .find
+});//End GET REQUEST
 
 var server = app.listen(8081, function () {
     var host = server.address().address
