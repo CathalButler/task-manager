@@ -60,7 +60,7 @@ export class PostService {
     const task: Task = { task_name: task_name, note: note, priority: priority, date: date, isComplete: isComplete };
     console.log("Task Added inside post.service!");
     return this.http.post("http://localhost:8081/api/tasks", task)
-  }o
+  }
 
   /**
   * @title Updates a task

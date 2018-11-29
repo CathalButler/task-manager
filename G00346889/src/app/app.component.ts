@@ -7,7 +7,7 @@ import { CreateComponent } from './create/create.component';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'G00346889';
+  title = 'Task Manger | G00346889';
 
   constructor(private createCon: CreateComponent) { }
 

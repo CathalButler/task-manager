@@ -88,10 +88,30 @@ export class ViewComponent implements OnInit {
     });
   }// End Function
 
+  ctrl($scope){
+
+    $scope.styleSelection = function(date) {
+    //Variables
+    var tempDate = date; // Date read in from function peramters
+
+    var day = tempDate.substr(8, 2);
+
+    console.log(day);
+
+    var todayDate = new Date(); //Get current date
+
+    if (date <= todayDate) { //TO-DO COMPLETE THIS FUNCTION TO ALLOW DIFFERENT TEXT COLOURS FROM DATES
+      return "red"
+    } else {
+      return ""
+    }// End if else
+  }// End function
+
+}
+
   ngOnInit() {
     this.postservice.getTasksData(false).subscribe(data => {
-      this.tasks = data; //get api json data for list
-      console.log('inside view.ts', this.tasks);
+      this.tasks = data; // API JSON data recived from the server passed into tasks array.
     })
   }// End function
 }// End class

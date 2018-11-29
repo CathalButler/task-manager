@@ -34,15 +34,13 @@ export class EditComponent implements OnInit {
   */ 
   onEditPost(form: NgForm) {
     this.ps.editTask(this.task[0]._id, form.value.task_name, form.value.note, form.value.priority, form.value.date, false).subscribe();
-    console.log('DONE INSIDE onEditPost', form.value);
     this.router.navigate(['/view']);
   }// End edit post
   
   ngOnInit() {
     console.log(this.route.snapshot.params['id']);
     this.ps.getTask(this.route.snapshot.params['id']).subscribe(data => {
-      this.task = data; //SOMETHING WORNG HERE?
-      console.log(this.task);
+      this.task = data; // API JSON data recived from the server passed into tasks array
     })
   }//End ngOnInit 
 }// End class
