@@ -1,9 +1,10 @@
+<!--  TITLE  -->
 <mat-toolbar class="header_toolbar" color="primary">Completed Tasks</mat-toolbar>
 <mat-accordion multi="true" *ngIf="tasks.length > 0">
   <div class="container">
     <mat-grid-list cols="3" rowHeight="300px">
       <mat-grid-tile *ngFor="let task of tasks">
-
+        
         <mat-card class="display_card">
           <mat-card-header>
             <mat-card-title>
@@ -31,10 +32,10 @@
               </mat-list-item>
 
               <mat-list-item class="bottom_right_card_grid">
-                <mat-radio-group name="priority" ngModel="{{task.priority}}" #priority="ngModel">
-                  <mat-radio-button name="priority" value='1'>!</mat-radio-button>
-                  <mat-radio-button name="priority" value="2">!!</mat-radio-button>
-                  <mat-radio-button name="priority" value="3">!!!</mat-radio-button>
+                <mat-radio-group ngModel="{{task.priority}}" disabled="true">
+                  <mat-radio-button name="priority1" value='1'>!</mat-radio-button>
+                  <mat-radio-button name="priority2" value="2">!!</mat-radio-button>
+                  <mat-radio-button name="priority3" value="3">!!!</mat-radio-button>
                 </mat-radio-group>
               </mat-list-item>
             </div>

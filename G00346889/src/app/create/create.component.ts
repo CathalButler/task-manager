@@ -36,6 +36,9 @@ export class CreateComponent implements OnInit {
   onAddTask(form: NgForm) {
     var dateString = form.value.date.toDateString();
     console.log(dateString);
+    // TO-DO, PASS DATE UP AS A NUMBER OR READ IT BACK IN VIEW.TS AS A NUMBER. NEED TO BE ABLE TO DISPLAY TASKS IN RED IF THE DATE
+    // IS PASSED THE CURRENT DATE.
+
     this.postService.addTask(form.value.task_name, form.value.note, form.value.priority, dateString, false).subscribe(() => {
     location.reload(true); //Reload the page
     });

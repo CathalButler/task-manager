@@ -7,7 +7,6 @@ export interface DialogData {
   note;
   taskId;
 }// End export interface
-//TO-DO ADD THIS TO A FILE AND CALL THAT EVERYTIME I NEED IT.
 
 /**
  * @title Today tasks.
@@ -90,15 +89,11 @@ export class TodayComponent implements OnInit {
     });
   }// End Function
 
-
   ngOnInit() {
-    // getDate() - need to get current date and do a seach of the database for the same date.
     var todayDate = new Date(); //Get current date
-    console.log(todayDate.toDateString()); //Print it
 
     this.postservice.getTodayTask(todayDate.toDateString()).subscribe(data => {
-      this.tasks = data; //Place data into tasks array
-      console.log('inside today.ts', this.tasks);
+      this.tasks = data; // API JSON data recived from the server passed into tasks array
     });
   }// End function
 }// End Class

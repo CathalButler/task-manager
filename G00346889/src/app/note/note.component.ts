@@ -47,6 +47,6 @@ export class NoteComponent implements OnInit {
   };//End onUpdate() function
 
   ngOnInit() {
-    console.log(this.tasksData);
   }//End function
+  
 } // End Class

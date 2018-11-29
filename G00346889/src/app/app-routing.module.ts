@@ -10,22 +10,22 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const routes: Routes = [
   {
-    path: '',
+    path: '', // Main view page for viewing task
     component: ViewComponent,
   },
   {
-    path: 'completed',
+    path: 'completed', // Completed tasks page
     component: CompletedComponent,
   },
   {
-    path: 'edit/:id',
+    path: 'edit/:id', // Edit page for editing a selected task
     component: EditComponent
   },
   {
-    path: 'today',
+    path: 'today', //Page that displayed current date tasks
     component: TodayComponent,
   },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent } // Displays 404 error page if user trys to nav to a page now in the app.
 ];
 
 @NgModule({
