@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../services/post.service';
+import { ApiService } from '../services/api.service';
 import { MatDialog } from '@angular/material';
 import { NoteComponent } from '../note/note.component';
 
@@ -35,7 +35,7 @@ export class TodayComponent implements OnInit {
 
   tasks: any = []; //Array used for locally storing tasks
 
-  constructor(private postservice: PostService, public dialog: MatDialog) { }
+  constructor(private api: ApiService, public dialog: MatDialog) { }
 
   /**
   * @title Delete Task
@@ -43,7 +43,7 @@ export class TodayComponent implements OnInit {
   */
   onDelete(id: String) {
     console.log("Deleting item")
-    this.postservice.deleteTask(id).subscribe(() => {
+    this.api.deleteTask(id).subscribe(() => {
       this.ngOnInit();//Refresh the page
     });
   }// End onDelete function
@@ -73,7 +73,7 @@ export class TodayComponent implements OnInit {
   * @note server handles request task id and true is passed into the .updateTask();
   */
   onComplete(id: String) {
-    this.postservice.updateTask(id, true).subscribe(() => { //Update selected task to 'isComplete = true'
+    this.api.updateTask(id, true).subscribe(() => { //Update selected task to 'isComplete = true'
       this.ngOnInit();
     });
   }//End Function
@@ -84,7 +84,7 @@ export class TodayComponent implements OnInit {
   * @note server handles request task id and updated value is passed into the .updatePriority() in post service.
   */
   onUpdate(id: String, priority: Number) {
-    this.postservice.updatePriority(id, priority).subscribe(() => {
+    this.api.updatePriority(id, priority).subscribe(() => {
       this.ngOnInit();
     });
   }// End Function
@@ -92,7 +92,7 @@ export class TodayComponent implements OnInit {
   ngOnInit() {
     var todayDate = new Date(); //Get current date
 
-    this.postservice.getTodayTask(todayDate.toDateString()).subscribe(data => {
+    this.api.getTodayTask(todayDate.toDateString()).subscribe(data => {
       this.tasks = data; // API JSON data recived from the server passed into tasks array
     });
   }// End function

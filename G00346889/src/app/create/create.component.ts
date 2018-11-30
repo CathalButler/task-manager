@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../services/post.service';
+import { ApiService } from '../services/api.service';
 import { NgForm } from "@angular/forms";
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { ViewComponent } from '../view/view.component';
@@ -25,7 +25,7 @@ export class CreateComponent implements OnInit {
 
   tasks: any = []; //Array used for locally storing contacts
 
-  constructor(private postService: PostService, public dialog: MatDialog, private viewConn: ViewComponent) { }
+  constructor(private api: ApiService, public dialog: MatDialog, private viewConn: ViewComponent) { }
   /**
    * @title Add new task 
    * @desc this function allows the user submit the fill out task form to the database.
@@ -34,12 +34,9 @@ export class CreateComponent implements OnInit {
    * @note 
    * */
   onAddTask(form: NgForm) {
-    var dateString = form.value.date.toDateString();
-    console.log(dateString);
-    // TO-DO, PASS DATE UP AS A NUMBER OR READ IT BACK IN VIEW.TS AS A NUMBER. NEED TO BE ABLE TO DISPLAY TASKS IN RED IF THE DATE
-    // IS PASSED THE CURRENT DATE.
+    var dateString = form.value.date.toDateString(); //Format date
 
-    this.postService.addTask(form.value.task_name, form.value.note, form.value.priority, dateString, false).subscribe(() => {
+    this.api.addTask(form.value.task_name, form.value.note, form.value.priority, dateString, false).subscribe(() => {
     location.reload(true); //Reload the page
     });
 

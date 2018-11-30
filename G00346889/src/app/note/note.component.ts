@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogData } from '../view/view.component';
-import { PostService } from '../services/post.service';
+import { ApiService } from '../services/api.service';
 
 /**
  * @title View Notes
@@ -21,7 +21,7 @@ import { PostService } from '../services/post.service';
 export class NoteComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<NoteComponent>,
-    @Inject(MAT_DIALOG_DATA) public tasksData: DialogData, private ps: PostService) { }
+    @Inject(MAT_DIALOG_DATA) public tasksData: DialogData, private api: ApiService) { }
 
   /**
    * @title Closes NoteComponent dialog.
@@ -37,9 +37,7 @@ export class NoteComponent implements OnInit {
    * it passes the values into the post servers updateNote() to be then put onto the server.
    */
   onUpdate(updatedNote: String) {
-    console.log('INSIDE NOTE.TS', this.tasksData.taskId, updatedNote); //SOMETHING WORNG HERE AND DATA NOT UPDADING TO WHAT IS BEING ENTERED
-
-    this.ps.updateNote(this.tasksData.taskId, updatedNote).subscribe(data => {
+    this.api.updateNote(this.tasksData.taskId, updatedNote).subscribe(data => {
       this.tasksData = data; // Update tasks data with the new data
       this.dialogRef.close(); //Close the dialog box
       location.reload(true);  //Reload the webpage
@@ -48,5 +46,5 @@ export class NoteComponent implements OnInit {
 
   ngOnInit() {
   }//End function
-  
+
 } // End Class

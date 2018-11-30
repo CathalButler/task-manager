@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { PostService } from '../services/post.service';
+import { ApiService } from '../services/api.service';
 import { MatDialog } from '@angular/material';
 import { NoteComponent } from '../note/note.component';
 
@@ -34,7 +34,7 @@ export class ViewComponent implements OnInit {
 
   tasks: any = []; //Array used for locally storing tasks
 
-  constructor(public dialog: MatDialog, private postservice: PostService) { }
+  constructor(public dialog: MatDialog, private api: ApiService) { }
 
   /**
    * @title Delete Task
@@ -42,7 +42,7 @@ export class ViewComponent implements OnInit {
    */
   onDelete(id: String) {
     console.log("Deleting item")
-    this.postservice.deleteTask(id).subscribe(() => {
+    this.api.deleteTask(id).subscribe(() => {
       this.ngOnInit();//Refresh the page
     });
   }// End onDelete function
@@ -72,7 +72,7 @@ export class ViewComponent implements OnInit {
   * @note server handles request task id and true is passed into the .updateTask();
   */
   onComplete(id: String) {
-    this.postservice.updateTask(id, true).subscribe(() => { //Update selected task to 'isComplete = true'
+    this.api.updateTask(id, true).subscribe(() => { //Update selected task to 'isComplete = true'
       this.ngOnInit();
     });
   }//End Function
@@ -83,34 +83,13 @@ export class ViewComponent implements OnInit {
   * @note server handles request task id and updated value is passed into the .updatePriority() in post service.
   */
   onUpdate(id: String, priority: Number) {
-    this.postservice.updatePriority(id, priority).subscribe(() => {
+    this.api.updatePriority(id, priority).subscribe(() => {
       this.ngOnInit();
     });
   }// End Function
 
-  ctrl($scope){
-
-    $scope.styleSelection = function(date) {
-    //Variables
-    var tempDate = date; // Date read in from function peramters
-
-    var day = tempDate.substr(8, 2);
-
-    console.log(day);
-
-    var todayDate = new Date(); //Get current date
-
-    if (date <= todayDate) { //TO-DO COMPLETE THIS FUNCTION TO ALLOW DIFFERENT TEXT COLOURS FROM DATES
-      return "red"
-    } else {
-      return ""
-    }// End if else
-  }// End function
-
-}
-
   ngOnInit() {
-    this.postservice.getTasksData(false).subscribe(data => {
+    this.api.getTasksData(false).subscribe(data => {
       this.tasks = data; // API JSON data recived from the server passed into tasks array.
     })
   }// End function

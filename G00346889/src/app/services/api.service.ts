@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Task } from '../task.model';
 
 /**
- * @title Post Service
+ * @title Api Service
  * @desc this service is used for handling requests from apps components to the server @localhost:8081.
  * Function implemented:
  * 
@@ -25,7 +25,7 @@ import { Task } from '../task.model';
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
+export class ApiService {
 
   constructor(private http: HttpClient) { }
 

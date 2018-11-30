@@ -24,12 +24,12 @@ var app = express();
 
 // Create a connection to MongoDB
 mongoose.Promise = require('bluebird');
-mongoose.connect(config.database, { promiseLibrary: require('bluebird') })
+mongoose.connect(config.database, { useNewUrlParser: true, promiseLibrary: require('bluebird') })
     .then(() => console.log('Connection succesful!'))
     .catch((err) => console.error(err));
 
 // Create application/x-www-form-urlencoded parser 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 //Add API route to the endpoint URL after other `use` function.
 app.use('/api', api); //Use API

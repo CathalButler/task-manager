@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 //Import for contact Service, used for adding and display contacts with the backend server.
-import { PostService } from './services/post.service';
+import { ApiService } from './services/api.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -81,7 +81,7 @@ import {
     CreateComponent,
     NoteComponent
   ],
-  providers: [PostService, CreateComponent, ViewComponent],
+  providers: [ApiService, CreateComponent, ViewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

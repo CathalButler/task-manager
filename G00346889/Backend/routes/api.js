@@ -1,5 +1,5 @@
+//Variables
 var express = require('express');
-var router = express.Router();
 var router = express.Router();
 var Task = require('../models/Task');
 
@@ -19,7 +19,7 @@ router.use(function (req, res, next) {
 router.get('/tasks/:isComplete', function (req, res) {
     Task.find({
         isComplete: req.params.isComplete
-    }, function (err, tasks) {
+    }, function (err, tasks) { //function take error arugement to handle any errors. Second parameters is data coming back from the server. 
         if (err) return res.status(500).send("There was a problem finding the tasks.");
         res.status(200).send(tasks);
         console.log("\nRetrieved tasks from database:\n");
@@ -40,7 +40,7 @@ router.post('/tasks', function (req, res, err) {
         date: req.body.date,
         isComplete: req.body.isComplete
     };
-    console.log('\nTask added!\n', response, '\n');
+    console.log('\nTask added!\n', response, '\n'); // Dislay responce
 
     //Create post with 'title' & 'content' delivered to uMabDB
     Task.create({
@@ -49,7 +49,7 @@ router.post('/tasks', function (req, res, err) {
         priority: req.body.priority,
         date: req.body.date,
         isComplete: req.body.isComplete
-    }, function (err, task) {
+    }, function (err, task) { //function take error arugement to handle any errors. Second parameters is data coming back from the server. 
         if (err) return res.status(500).send("There was a problem adding the information to the database.");
         //Saved!
         res.status(200).send(task);//End res.status.json
@@ -76,11 +76,11 @@ router.delete('/tasks/:id', function (req, res) {
  * @desc gets a task by its id number from the database.
  * @note executes immediately, passing results to callback. Logs the data to the server console.
  */
-router.get('/tasks/edit/:id', function (req, res) { //Had to change link ending in order to stop the worng GET funtion being called in here by edit page
+router.get('/tasks/edit/:id', function (req, res) {
     Task.find({ //findById() method returns data a different way to find()
         _id: req.params.id
     },
-        function (err, task) {
+        function (err, task) { //function take error arugement to handle any errors. Second parameters is data coming back from the server. 
             if (err) return res.status(500).send("There was a problem finding the task.");
             if (!task) return res.status(404).send("No task found.");
             res.status(200).send(task);
@@ -98,7 +98,7 @@ router.put('/tasks/edit/:id', function (req, res) {
         req.params.id,
         req.body,
         { new: true },
-        function (err, task) {
+        function (err, task) { //function take error arugement to handle any errors. Second parameters is data coming back from the server. 
             if (err) return res.status(500).send("There was a problem updating the task.");
             res.status(200).send(task);
             console.log('\nTask updated in database\n'); //Log the delete
@@ -115,7 +115,7 @@ router.put('/tasks/update/:id', function (req, res) {
         req.params.id,
         req.body,
         { new: true },
-        function (err, task) {
+        function (err, task) { //function take error arugement to handle any errors. Second parameters is data coming back from the server. 
             if (err) return res.status(500).send("There was a problem updating the task.");
             res.status(200).send(task);
             console.log('\nTask status has been updated in database\n', task); //Log the delete
@@ -132,7 +132,7 @@ router.put('/tasks/update/note/:id', function (req, res) {
         req.params.id,
         req.body,
         { new: true },
-        function (err, task) {
+        function (err, task) { //function take error arugement to handle any errors. Second parameters is data coming back from the server. 
             if (err) return res.status(500).send("There was a problem updating the task.");
             res.status(200).send(task);
             console.log('\nTask status has been updated in database\n', task); //Log the delete
@@ -149,7 +149,7 @@ router.put('/tasks/update/priority/:id', function (req, res) {
         req.params.id,
         req.body,
         { new: true },
-        function (err, task) {
+        function (err, task) { //function take error arugement to handle any errors. Second parameters is data coming back from the server. 
             if (err) return res.status(500).send("There was a problem updating the task.");
             res.status(200).send(task);
             console.log('\nTask status has been updated in database\n', task); //Log the delete
@@ -166,7 +166,7 @@ router.get('/tasks/today/:todaysDate', function (req, res) {
     console.log(req.params.todaysDate);
     Task.find({
         date: req.params.todaysDate //TO-DO MAKE SURE WHEN MARKED COMPLETE IT REMOVES FROM TODAY LIST OR ADDS TICK
-    }, function (err, tasks) {
+    }, function (err, tasks) { //function take error arugement to handle any errors. Second parameters is data coming back from the server. 
         if (err) return res.status(500).send("There was a problem finding the tasks for the current date(today).");
         res.status(200).send(tasks);
         console.log("\nRetrieved all current tasks from database:\n");

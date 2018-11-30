@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../services/post.service';
+import { ApiService } from '../services/api.service';
 import { MatDialog } from '@angular/material';
 import { NoteComponent } from '../note/note.component';
 
@@ -34,7 +34,7 @@ export class CompletedComponent implements OnInit {
 
   tasks: any = []; //Array used for locally storing tasks
 
-  constructor(private postservice: PostService, public dialog: MatDialog) { }
+  constructor(private api: ApiService, public dialog: MatDialog) { }
 
   /**
   * @title Delete Task
@@ -42,7 +42,7 @@ export class CompletedComponent implements OnInit {
   */
   onDelete(id: string) {
     console.log("Deleting item")
-    this.postservice.deleteTask(id).subscribe(() => {
+    this.api.deleteTask(id).subscribe(() => {
       this.ngOnInit();//Refresh the page
     });
   }// End onDelete function
@@ -73,13 +73,13 @@ export class CompletedComponent implements OnInit {
   * isComplete = false
   */
   onUnComplete(id: String) {
-    this.postservice.updateTask(id, false).subscribe(() => { //Update selected task to 'isComplete = false'
+    this.api.updateTask(id, false).subscribe(() => { //Update selected task to 'isComplete = false'
       this.ngOnInit();
     });
   }//End Function
 
   ngOnInit() {
-    this.postservice.getTasksData(true).subscribe(data => {
+    this.api.getTasksData(true).subscribe(data => {
       this.tasks = data; //get api json data for list
     })
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PostService } from '../services/post.service';
+import { ApiService } from '../services/api.service';
 import { NgForm } from "@angular/forms";
 
 /**
@@ -24,7 +24,7 @@ export class EditComponent implements OnInit {
 
   task: any = [];
 
-  constructor(private router: Router, private route: ActivatedRoute, private ps: PostService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService) { }
 
   /** 
   * @title Edit post
@@ -33,13 +33,13 @@ export class EditComponent implements OnInit {
   *      - import { NgForm }
   */ 
   onEditPost(form: NgForm) {
-    this.ps.editTask(this.task[0]._id, form.value.task_name, form.value.note, form.value.priority, form.value.date, false).subscribe();
+    this.api.editTask(this.task[0]._id, form.value.task_name, form.value.note, form.value.priority, form.value.date, false).subscribe();
     this.router.navigate(['/view']);
   }// End edit post
   
   ngOnInit() {
     console.log(this.route.snapshot.params['id']);
-    this.ps.getTask(this.route.snapshot.params['id']).subscribe(data => {
+    this.api.getTask(this.route.snapshot.params['id']).subscribe(data => {
       this.task = data; // API JSON data recived from the server passed into tasks array
     })
   }//End ngOnInit 
