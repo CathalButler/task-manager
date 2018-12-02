@@ -25,7 +25,7 @@ const routes: Routes = [
     path: 'today', //Page that displayed current date tasks
     component: TodayComponent,
   },
-  { path: '**', component: PageNotFoundComponent } // Displays 404 error page if user trys to nav to a page now in the app.
+  { path: '**', component: PageNotFoundComponent } // Displays 404 error page if user trys to nav to a page not in the app.
 ];
 
 @NgModule({

@@ -29,7 +29,7 @@ export class CreateComponent implements OnInit {
   /**
    * @title Add new task 
    * @desc this function allows the user submit the fill out task form to the database.
-   * It passes the form data into PostService.addTask() function which then passes it to
+   * It passes the form data into Api.addTask() function which then passes it to
    * the server. 
    * @note 
    * */

@@ -58,7 +58,6 @@ export class ApiService {
   */
   addTask(task_name: String, note: String, priority: Number, date: String, isComplete: Boolean): Observable<any> {
     const task: Task = { task_name: task_name, note: note, priority: priority, date: date, isComplete: isComplete };
-    console.log("Task Added inside post.service!");
     return this.http.post("http://localhost:8081/api/tasks", task)
   }
 
@@ -69,7 +68,6 @@ export class ApiService {
   */
   editTask(id: String, task_name: String, note: String, priority: Number, date: String, isComplete: Boolean): Observable<any> {
     const task: Task = { task_name: task_name, note: note, priority: priority, date: date, isComplete: isComplete };
-    console.log('inside updateTask() in post service', task);
     return this.http.put("http://localhost:8081/api/tasks/edit/" + id, task);
   }
 

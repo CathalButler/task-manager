@@ -28,6 +28,6 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    <button mat-raised-button color="accent" type="submit">Update Post</button>
+    <button mat-raised-button color="accent" type="submit" [disabled]="!postForm.form.valid">Update Post</button>
   </form>
 </div>

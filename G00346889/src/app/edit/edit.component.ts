@@ -34,7 +34,7 @@ export class EditComponent implements OnInit {
   */ 
   onEditPost(form: NgForm) {
     this.api.editTask(this.task[0]._id, form.value.task_name, form.value.note, form.value.priority, form.value.date, false).subscribe();
-    this.router.navigate(['/view']);
+    this.router.navigate(['/']); //Return the home
   }// End edit post
   
   ngOnInit() {

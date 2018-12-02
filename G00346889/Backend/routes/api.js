@@ -11,6 +11,7 @@ router.use(function (req, res, next) {
     next();
 });
 
+//ROUTES 
 /**
  * @title GET REQUEST, find().
  * @desc gets all tasks data from the database.
