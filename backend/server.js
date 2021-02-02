@@ -11,16 +11,16 @@
     https://www.tutorialspoint.com/nodejs/nodejs_express_framework.htm
     https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
 */
-//Varables
-var express = require('express');
-var bodyParser = require('body-parser'); // Need for post methods
+// Variables
+const express = require('express');
+const bodyParser = require('body-parser'); // Need for post methods
 //Mongoose & mLab Variables
-var mongoose = require('mongoose');
-var config = require('./config/database');
+const mongoose = require('mongoose');
+const config = require('./config/database');
 
 // Declare a variable for API route
-var api = require('./routes/api');
-var app = express();
+const api = require('./routes/api');
+const app = express();
 
 // Create a connection to MongoDB
 mongoose.Promise = require('bluebird');
@@ -37,9 +37,9 @@ app.use('/api', api); //Use API
 /**
  * Server listen, running on localhost:8081
  */
-var server = app.listen(8081, function () {
-    var host = server.address().address
-    var port = server.address().port
+const server = app.listen(8081, function () {
+    let host = server.address().address
+    let port = server.address().port
 
     console.log("Example app listening at http://%s:%s", host, port)
 });

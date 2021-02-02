@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../services/api.service';
 import {NoteComponent} from '../note/note.component';
 import {MatDialog} from '@angular/material/dialog';

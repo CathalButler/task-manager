@@ -41,7 +41,7 @@ export class EditComponent implements OnInit {
     ngOnInit() {
         console.log(this.route.snapshot.params['id']);
         this.api.getTask(this.route.snapshot.params['id']).subscribe(data => {
-            this.task = data; // API JSON data recived from the server passed into tasks array
+            this.task = data; // API JSON data received from the server passed into tasks array
         });
     } // End ngOnInit
 }// End class

@@ -3,5 +3,5 @@ export class Task {
     note: String;
     priority: Number;
     date: String;
-    isComplete: Boolean
+    isComplete: Boolean;
 }

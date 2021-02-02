@@ -9,8 +9,8 @@ After cloning run `npm install @angular/cli` then run ng serve for a dev server.
 
 Run server in the `backend/` `node or nodemon server.js`
 
-# User features:
-## Create Task:
+## User features:
+### Create Task:
 
 Allows the user to add a task with the following criteria:
 
@@ -19,9 +19,9 @@ Allows the user to add a task with the following criteria:
       - Priority of the task
       - Note.
 
-## View Tasks:
+### View Tasks:
 
-Allows the user view tasks entered in the database and:
+Allows the user view tasks stored in the database and:
 
       - Edit Post: you can edit the task name, date, priority, and note.
       - Delete Post: deletes a selected task.
@@ -29,7 +29,7 @@ Allows the user view tasks entered in the database and:
       - View/edit task note: task note can be viewed from a pop out dialog and can also be edited and updated. 
       - Update priority: task priority can be updated by selecting a radio button.
 
-## Completed Tasks:
+### Completed Tasks:
 
 Allows the user view completed tasks in the database and:
 
@@ -37,7 +37,7 @@ Allows the user view completed tasks in the database and:
      - Delete task: deletes a selected task.
      - Mark a task as incomplete: sets a task to is not complete and it will then display in view tasks page.
 
-## Today's Tasks:
+### Today's Tasks:
 
 Allows the user to view tasks for the current date if any are in the database and:
 
@@ -46,13 +46,8 @@ Allows the user to view tasks for the current date if any are in the database an
      - Mark a task complete: sets a task to is complete and it will then display in Completed tasks page.
      - View/edit task note: task note can be viewed from a pop out dialog and can also be edited and updated. 
      - Update priority: task priority can be updated by selecting a radio button.
-
-##  End User features
 ##  Development
     Angular         :  v11.1.2
-    Node Express    :  v4.16.4
-    Npm             :  v6.14.11
-    Mongoose        :  v5.3.14
 
 
 

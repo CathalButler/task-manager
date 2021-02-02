@@ -8,15 +8,16 @@ import {Task} from '../task.model';
  * @desc this service is used for handling requests from apps components to the server @localhost:8081.
  * Function implemented:
  *
- *     - getTasksData(boolean) - gets all tasks from the server. Take one peramter for task being 'uncompleted' or 'complete'
+ *     - getTasksData(boolean) - gets all tasks from the server. Take one parameter for task being 'uncompleted' or 'complete'
  *     - getTask(String) -  get a task by its ID from the server.
  *     - addTask(String, String, Number, String, Boolean) - post a newly created task to the server.
  *     - editTask(String, String, Number, String, Boolean) - put a edited task data to the server.
  *     - deleteTask(String) - delete request by task id to the server.
- *     - updateTask(String, boolean) - put request for a updated task. Takes two peramters, task id and isComplete.
- *     - updateNote(String, String) - put request to update a note for a selected task. Takes two permaters, task id and note.
- *     - updatePriority(String, Number) - put request to update the priority of a selected task. Takes two permaters, tasks id and priority.
- *     - getTodayTask(String) - get request to get tasks for the current date(todays date). Takes one permater, todaysDate.
+ *     - updateTask(String, boolean) - put request for a updated task. Takes two parameters, task id and isComplete.
+ *     - updateNote(String, String) - put request to update a note for a selected task. Takes two parameters, task id and note.
+ *     - updatePriority(String, Number) - put request to update the priority of a selected task. Takes two parameters,
+ *     tasks id and priority.
+ *     - getTodayTask(String) - get request to get tasks for the current date(today's date). Takes one perimeter, todaysDate.
  *
  * @note Used imports:
  *    - import { Task } // Model
@@ -29,9 +30,6 @@ export class ApiService {
 
     constructor(private http: HttpClient) {
     }
-
-    // Array of posts
-    private tasks: Task[] = [];
 
     /**
      * @title Get tasks data.
@@ -54,7 +52,7 @@ export class ApiService {
 
     /**
      * @title Adds a tasks.
-     * @desc adds a task from the applcation create page.
+     * @desc adds a task from the application create page.
      * @note passes Strings and a Boolean, Server takes care of the request and data.
      */
     addTask(task_name: String, note: String, priority: Number, date: String, isComplete: Boolean): Observable<any> {
@@ -108,7 +106,7 @@ export class ApiService {
      */
     updatePriority(id: String, priority: Number): Observable<any> {
         const updatePriority = {priority};
-        return this.http.put('http://localhost:8081/api/tasks/update/priority/' + id, updatePriority)
+        return this.http.put('http://localhost:8081/api/tasks/update/priority/' + id, updatePriority);
     }
 
     /**

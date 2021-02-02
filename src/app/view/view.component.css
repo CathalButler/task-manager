@@ -24,10 +24,9 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: initial;
   word-wrap: break-word;
   display: block;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .mat-radio-button {
@@ -46,7 +45,7 @@
   width: 100%;
   height: auto;
   display: grid;
-  grid-gap: 0px;
+  grid-gap: 0;
   grid-template-areas: 
   "a b"
   "c d";
@@ -67,16 +66,16 @@
   grid-area: d;
   margin-block-start: 1.33em;
   margin-block-end: 1.33em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
 }
 
 .custom_p{
   display: block;
   margin-block-start: 1.33em;
   margin-block-end: 1.33em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
   font-weight: normal;
 }
 

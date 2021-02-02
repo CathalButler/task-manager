@@ -3,18 +3,13 @@ import {ApiService} from '../services/api.service';
 import {NoteComponent} from '../note/note.component';
 import {MatDialog} from '@angular/material/dialog';
 
-export interface DialogData {
-    note;
-    taskId;
-}// End export interface
-
 /**
  * @title Completed tasks.
  * @desc this component displays the completed tasks data to on screen it adds functions
  * for the user like:
  *     - onDelete() - allows the user delete a post
  *     - openDialog() -  allows the user view the note on a post.
- *     - onUnComplete() - allows the user mark a task as uncomplete and moves it back to current tasks in view.
+ *     - onUnComplete() - allows the user mark a task as uncompleted and moves it back to current tasks in view.
  *
  * @note this component exports the 'note data' from a selected task to the note.component
  * to be displayed on screen in a pop up dialog box.
@@ -69,7 +64,7 @@ export class CompletedComponent implements OnInit {
 
     /**
      * @title Mark task uncompleted
-     * @desc sets a seleted task to be marked as uncomplete.
+     * @desc sets a selected task to be marked as uncompleted.
      * @note server handles request task id and true is passed into the .updateTask();
      * isComplete = false
      */

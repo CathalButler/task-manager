@@ -3,14 +3,9 @@ import {ApiService} from '../services/api.service';
 import {NoteComponent} from '../note/note.component';
 import {MatDialog} from '@angular/material/dialog';
 
-export interface DialogData {
-    note;
-    taskId;
-}// End export interface
-
 /**
  * @title Today tasks.
- * @desc this component displays current day tasks(todays date)
+ * @desc this component displays current day tasks(today's date)
 
  *     - onDelete() - allows the user delete a post
  *     - openDialog() -  allows the user view the note on a post.
@@ -70,7 +65,7 @@ export class TodayComponent implements OnInit {
 
     /**
      * @title Mark task completed
-     * @desc sets a seleted task to be marked as complete.
+     * @desc sets a selected task to be marked as complete.
      * @note server handles request task id and true is passed into the .updateTask();
      */
     onComplete(id: String) {
@@ -81,7 +76,7 @@ export class TodayComponent implements OnInit {
 
     /**
      * @title Updates Priority
-     * @desc updates a selected tasks prioity.
+     * @desc updates a selected tasks priority.
      * @note server handles request task id and updated value is passed into the .updatePriority() in post service.
      */
     onUpdate(id: String, priority: Number) {

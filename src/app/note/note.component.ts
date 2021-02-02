@@ -1,13 +1,13 @@
 import {Component, OnInit, Inject} from '@angular/core';
 import {DialogData} from '../view/view.component';
 import {ApiService} from '../services/api.service';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 /**
  * @title View Notes
  * @desc this component displays the note for a selected task.
  * @note this component reads in note data from 'view.component' it is read in from
- * importted interface:
+ * imported interface:
  *     - import { DialogData }
  * With the usage of:
  *     - import { MatDialog, MatDialogRef, MAT_DIALOG_DATA }

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../services/api.service';
-import {ViewComponent} from '../view/view.component';
 import {MatDialog} from '@angular/material/dialog';
 import {NgForm} from '@angular/forms';
 
@@ -25,7 +24,7 @@ export class CreateComponent implements OnInit {
 
     tasks: any = []; // Array used for locally storing contacts
 
-    constructor(private api: ApiService, public dialog: MatDialog, private viewConn: ViewComponent) {
+    constructor(private api: ApiService, public dialog: MatDialog) {
     }
 
     /**
@@ -67,7 +66,7 @@ export class CreateComponent implements OnInit {
      * @desc Function used to close popout dialog box that display the create form from create.component
      * Used imports:
      *      - import { MatDialog }
-     *      - import { CreateComonent }
+     *      - import { CreateComponent }
      */
     closeDialog() {
         this.dialog.closeAll();
